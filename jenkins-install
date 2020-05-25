@@ -1,0 +1,40 @@
+ To check and select one out of multiple java versions available
+   sudo /usr/sbin/alternatives --config java
+
+Step 4 : Download latest Jenkins code package
+   wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+Step 5 : Import a key file from Jenkins-CI to enable installation from the package
+   rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+Step 6 : Install Jenkins
+   sudo yum install jenkins
+
+Step 7 : Start jenkins
+   sudo service jenkins start
+
+Step 8 : Access Jenkins server using the public DNS of your ec2 on port 8080
+   http://{ec2-public-dns}:8080
+   example : http://3.89.79.74:8080/
+
+Note : Here you might have to allow port 8080 in your security group settings
+                     
+
+Useful tips
+
+To start jenkins on a diff port
+Update port number in /etc/sysconfig/jenkins
+
+
+To fetch initial admin password
+ sudo su -
+ cat /var/lib/jenkins/secrets/initialAdminPassword
+ cat initialAdminPassword
+0bcbbcab7f984af7b4171b55e9201d04
+To stop Jenkins
+ sudo service jenkins stop
+
+To uninstall Jenkins
+ sudo service jenkins stop
+ sudo yum remove jenkins
+ sudo rm -r /var/lib/jenkins

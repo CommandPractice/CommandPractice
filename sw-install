@@ -1,0 +1,48 @@
+echo "Install Wget"
+echo ""
+sudo yum install wget
+echo ""
+echo "Download Java"
+echo ""
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u251-b08/3d5a2bb8f8d4428bbe94aed7ec7ae784/jdk-8u251-linux-x64.rpm
+
+echo ""
+echo "Install Java"
+sudo yum install -y jdk-14.0.1_linux-x64_bin.rpm
+echo ""
+Looking for java version
+echo ""
+java -version
+echo ""
+echo "Configure JAVA_HOME"
+echo ""
+export JAVA_HOME=/usr/java/jdk1.8.0_141
+export PATH=$JAVA_HOME/bin:$PATH
+echo ""
+echo "Install Maven"
+wget https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
+unzip apache-maven-3.6.3-bin.zip
+
+echo "Configure Maven Path"
+export M2_HOME=/root/apache-maven-3.6.3/
+export M2=$M2_HOME/bin
+export PATH=$M2:$PATH
+
+echo ""
+echo ""
+echo "Install Git"
+sudo yum install autoconf libcurl-devel expat-devel gcc gettext-devel kernel-headers openssl-devel perl-devel zlib-devel -y
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.26.0.tar.gz
+tar -xvzf git-2.26.0.tar.gz
+cd /opt/
+mkdir git-installed
+cd git-2.26.0
+./configure --prefix=/opt/git-installed
+make install
+ln -s /opt/git-installed/bin/git /bin/git
+
+echo "Install Tomcat"
+
+
+
+

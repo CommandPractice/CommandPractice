@@ -1,0 +1,1 @@
+ scp -i "chinmaya-aws.pem" Dockerfiles.zip ubuntu@ec2-13-126-2-140.ap-south-1.compute.amazonaws.com:/home/My-Files
